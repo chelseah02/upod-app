@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	StyleSheet,
 	Text,
+    TextInput,
 	SafeAreaView,
 	useWindowDimensions,
     Pressable,
@@ -10,6 +11,7 @@ import {
 } from "react-native";
 
 import BlueButton from "../../components/BlueButton";
+
 
 const VerifyMobileAndEmail = ({ navigation }) => {
 
@@ -24,7 +26,7 @@ const VerifyMobileAndEmail = ({ navigation }) => {
             </Text>
 			<View style={ styles.colContainer }>
                 <Text style={ styles.subHeading1 }>
-                Link at least 1 of your social media profiles below so we can verify your sumbitted profile photo matches your social media profile. If we cannot verify your identity you will not be allowed into the community.
+                We also need to verify your phone number and email.
                 </Text>
                 <View style={ styles.socialmediaWrapper }>
                     <View style= { styles.rowContainer}>
@@ -61,12 +63,6 @@ const VerifyMobileAndEmail = ({ navigation }) => {
                         </Pressable>
                     </View>
                 </View>
-				<Text style={ styles.subHeading2 }>
-                    If you're not on social media tap {""}
-                    <Text style={ {color: "#56C1FF"} }>
-                        HERE
-                    </Text>
-				</Text>
                 <BlueButton 
 					textContent={"SEND VERIFICATION CODE"}
 					onPress={onBlueButtonPress}
