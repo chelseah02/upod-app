@@ -22,40 +22,44 @@ const AboutYou = ({ navigation }) => {
             <Text style={ styles.heading }>
                 Verify your photo
             </Text>
-			<View style={ styles.inputContainer }>
+			<View style={ styles.colContainer }>
                 <Text style={ styles.subHeading1 }>
                 Link at least 1 of your social media profiles below so we can verify your sumbitted profile photo matches your social media profile. If we cannot verify your identity you will not be allowed into the community.
                 </Text>
-                <View style= { styles.mediaContainer}>
-                    <Pressable>
+                <View style={ styles.socialmediaWrapper }>
+                    <View style= { styles.rowContainer}>
+                        <Image style={styles.tinyLogo} source={require('../../../assets/instagram.png')} />
+                        <Pressable>
+                            <Text style={styles.socialmedia}>
+                                instagram.com/
+                                <Text style={{color: "#56C1FF"}} >
+                                    yourprofile
+                                </Text>
+                            </Text>
+                        </Pressable>
+                    </View>
+                    <View style= { styles.rowContainer}>
+                        <Image style={styles.tinyLogo} source={require('../../../assets/facebook.png')} />
+                        <Pressable>
+                            <Text style={styles.socialmedia}>
+                                facebook.com/
+                                <Text style={{color: "#56C1FF"}} >
+                                    yourprofile
+                                </Text>
+                            </Text>
+                        </Pressable>
+                    </View>
+                    <View style= { styles.rowContainer}>
                         <Image style={styles.tinyLogo} source={require('../../../assets/linkedin.png')} />
-                        <Text style={styles.socialmedia}>
-                            instagram.com/
-                            <Text style={{color: "#56C1FF"}} >
-                                yourprofile
+                        <Pressable>
+                            <Text style={styles.socialmedia}>
+                                LinkedIn.com/
+                                <Text style={{color: "#56C1FF"}} >
+                                    yourprofile
+                                </Text>
                             </Text>
-                        </Text>
-                    </Pressable>
-                </View>
-                <View style= { styles.inputContainer}>
-                    <Pressable>
-                        <Text style={styles.socialmedia}>
-                            facebook.com/
-                            <Text style={{color: "#56C1FF"}} >
-                                yourprofile
-                            </Text>
-                        </Text>
-                    </Pressable>
-                </View>
-                <View style= { styles.inputContainer}>
-                    <Pressable>
-                        <Text style={styles.socialmedia}>
-                            LinkedIn.com/
-                            <Text style={{color: "#56C1FF"}} >
-                                yourprofile
-                            </Text>
-                        </Text>
-                    </Pressable>
+                        </Pressable>
+                    </View>
                 </View>
 				<Text style={ styles.subHeading2 }>
                     If you're not on social media tap {""}
@@ -83,7 +87,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "flex-start",
 	},
-	inputContainer: {
+	colContainer: {
 		width: 275,
 	},
 	text: {
@@ -128,23 +132,30 @@ const styles = StyleSheet.create({
         marginBottom: 25,
 		textAlign: "center",
     },
+    socialmediaWrapper: {
+        marginTop: 20,
+        marginBottom: 40,
+    },
     socialmedia: {
         fontSize: 14,
 		fontWeight: "bold",
         color: "#EFEFEF",
-		marginTop: 30,
 		textAlign: "center",
         borderWidth: 1.5,
         borderRadius: 20,
         borderColor: "#EFEFEF",
         paddingTop: 10,
         paddingBottom: 10,
+        width: 215,
     },
-    mediaContainer: {
-
+    rowContainer: {
+        marginTop: 40,
+        justifyContent: "space-between",
+        flexDirection: "row",
+        alignItems: "center",
     },
     tinyLogo: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
     }
 });
