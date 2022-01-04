@@ -11,7 +11,7 @@ import {
 
 import BlueButton from "../../components/BlueButton";
 
-const VerifyPhoto = ({ navigation }) => {
+const VerifyMobileAndEmail = ({ navigation }) => {
 
     // blue button submit handler
 	const onBlueButtonPress = () => navigation.push("VerifyMobileAndEmail");
@@ -20,7 +20,7 @@ const VerifyPhoto = ({ navigation }) => {
 	return (
 		<SafeAreaView style={ styles.container }>
             <Text style={ styles.heading }>
-                Verify your photo
+                Verify your mobile {"&"} email
             </Text>
 			<View style={ styles.colContainer }>
                 <Text style={ styles.subHeading1 }>
@@ -68,7 +68,7 @@ const VerifyPhoto = ({ navigation }) => {
                     </Text>
 				</Text>
                 <BlueButton 
-					textContent={"NEXT"}
+					textContent={"SEND VERIFICATION CODE"}
 					onPress={onBlueButtonPress}
 				/>
 			</View>
@@ -76,7 +76,7 @@ const VerifyPhoto = ({ navigation }) => {
 	);
 };
 
-export default VerifyPhoto;
+export default VerifyMobileAndEmail;
 
 const styles = StyleSheet.create({
     container: {

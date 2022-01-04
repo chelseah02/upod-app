@@ -8,7 +8,8 @@ import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import Onboarding from "./screens/Onboarding";
 import Album from "./screens/AddProfilePic/Album";
-import VerifyPhoto from "./screens/AddProfilePic/VerifyPhoto"
+import VerifyPhoto from "./screens/AddProfilePic/VerifyPhoto";
+import VerifyMobileAndEmail from "./screens/Verify/VerifyMobileAndEmail";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ function App() {
 				<Stack.Screen name="AdventureDetail" component={AdventureDetail} />
 				<Stack.Screen name="Album" component={Album} />
 				<Stack.Screen name="VerifyPhoto" component={VerifyPhoto} />
+				<Stack.Screen name="VerifyMobileAndEmail" component={VerifyMobileAndEmail} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
