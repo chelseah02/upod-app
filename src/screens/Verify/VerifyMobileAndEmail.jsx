@@ -11,13 +11,23 @@ import {
 } from "react-native";
 
 import BlueButton from "../../components/BlueButton";
-
+import DropDownPicker from "react-native-dropdown-picker";
 
 const VerifyMobileAndEmail = ({ navigation }) => {
 
     // blue button submit handler
 	const onBlueButtonPress = () => navigation.push("VerifyMobileAndEmail");
 	const { width } = useWindowDimensions();
+
+	const identities = ["Male", "Female", "Nonbinary", "Prefer not to say"];
+	const [genders, setGenders] = useState(
+		identities.map((gender)=>({
+			label: gender,
+			value: (gender = "Prefer not to say") ? "" : gender,
+		}))
+	);
+	const [open, setOpen] = useState(false);
+	const [value, setValue] = useState(null);
 
 	return (
 		<SafeAreaView style={ styles.container }>
@@ -28,41 +38,38 @@ const VerifyMobileAndEmail = ({ navigation }) => {
                 <Text style={ styles.subHeading1 }>
                 We also need to verify your phone number and email.
                 </Text>
-                <View style={ styles.socialmediaWrapper }>
-                    <View style= { styles.rowContainer}>
-                        <Image style={styles.tinyLogo} source={require('../../../assets/instagram.png')} />
-                        <Pressable>
-                            <Text style={styles.socialmedia}>
-                                instagram.com/
-                                <Text style={{color: "#56C1FF"}} >
-                                    yourprofile
-                                </Text>
-                            </Text>
-                        </Pressable>
-                    </View>
-                    <View style= { styles.rowContainer}>
-                        <Image style={styles.tinyLogo} source={require('../../../assets/facebook.png')} />
-                        <Pressable>
-                            <Text style={styles.socialmedia}>
-                                facebook.com/
-                                <Text style={{color: "#56C1FF"}} >
-                                    yourprofile
-                                </Text>
-                            </Text>
-                        </Pressable>
-                    </View>
-                    <View style= { styles.rowContainer}>
-                        <Image style={styles.tinyLogo} source={require('../../../assets/linkedin.png')} />
-                        <Pressable>
-                            <Text style={styles.socialmedia}>
-                                LinkedIn.com/
-                                <Text style={{color: "#56C1FF"}} >
-                                    yourprofile
-                                </Text>
-                            </Text>
-                        </Pressable>
-                    </View>
-                </View>
+                <Text style={styles.labelText}>
+					Country/Region
+				</Text>
+				<DropDownPicker style={styles.dropdown}
+					open={open}
+					value={value}
+					items={genders}
+					placeholder="Select your gender"
+					translation={{PLACEHOLDER:"Select your gender",}}
+					setOpen={setOpen}
+					setValue={setValue}
+					setItems={setGenders}
+					textStyle={styles.dropdownText}
+					dropDownContainerStyle={styles.dropdown}
+				/>
+                <Text style={styles.labelText}>
+					Phone Number
+				</Text>
+				<TextInput 
+					style={ styles.input }
+                    placeholder="Enter number here"
+                    placeholderTextColor={"#EFEFEF"}
+                    keyboardType="numeric"
+				/>
+                <Text style={styles.labelText}>
+					Email
+				</Text>
+				<TextInput 
+					style={ styles.input }
+                    placeholder="Enter email here"
+                    placeholderTextColor={"#EFEFEF"}
+				/>
                 <BlueButton 
 					textContent={"SEND VERIFICATION CODE"}
 					onPress={onBlueButtonPress}
@@ -153,5 +160,24 @@ const styles = StyleSheet.create({
     tinyLogo: {
         width: 40,
         height: 40,
+    },
+    dropdown: {
+		marginTop: 20,
+		width: 275,
+		backgroundColor: "#363444",
+		borderColor: "#363444",
+        alignSelf: "center",
+		marginBottom: 33,
+	},
+    input: {
+        borderRadius: 10,
+        height: 45,
+        width: "100%",
+        backgroundColor: "#363444",
+        color: "#EFEFEF",
+        fontSize: 16,
+        marginTop: 10,
+        marginBottom: 10,
+		paddingLeft: 15,
     }
 });
